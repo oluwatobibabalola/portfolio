@@ -1,0 +1,18 @@
+@import url("https://fonts.cdnfonts.com/css/tt-commons");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-width: 0;
+}
+@layer base {
+  html,
+  body {
+    font-family: "TT Commons", sans-serif;
+  }
+}
