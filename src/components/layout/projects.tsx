@@ -3,15 +3,15 @@ import { mainProjects } from "../../data/main-projects";
 import { SectionHeader } from "../ui/section-header";
 export const Projects = () => {
   return (
-    <section className="flex flex-col items-center justify-center space-y-10 text-center ">
+    <section className="flex flex-col items-center justify-center text-center ">
       <SectionHeader> Selected Projects</SectionHeader>
 
-      <div className="space-y-10 ">
+      <div className="space-y-4 ">
         {mainProjects.map((project) => {
           return (
             <div
               key={project.id}
-              className="flex flex-col items-center justify-center space-y-6 text-center "
+              className="flex flex-col items-center justify-center space-y-4 text-center "
             >
               <Link
                 to={project.link}

@@ -3,7 +3,7 @@ import profilePic from "../../assets/profile-pic.png";
 export const Navbar = () => {
   return (
     <div className="sticky top-0 z-50 w-full pt-6 bg-white/70 backdrop-blur-md ">
-      <nav className="w-full p-4 border rounded-full shadow-sm backdrop-blur-md bg-white/30 border-border-color">
+      <nav className="w-full py-8 border rounded-full shadow-sm px-14 backdrop-blur-md bg-white/30 border-border-color">
         <div className="flex items-center justify-between mx-auto">
           <div className="flex items-center space-x-4">
             <Link to={"/"}>

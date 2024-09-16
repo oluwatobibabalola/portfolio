@@ -1,78 +1,92 @@
 import { Link, useParams } from "react-router-dom";
 import { mainProjects } from "../data/main-projects";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "../components/ui/button";
+import { ArrowBack } from "../components/icons";
+import { SubHeading } from "../components/ui/sub-heading";
 const sections = [
   {
-    id: "section1",
+    id: "project-summary",
     title: "Project Summary",
   },
-  { id: "section2", title: "Context" },
-  { id: "section3", title: "Discovery" },
+  { id: "context", title: "Context" },
+  { id: "discovery", title: "Discovery" },
   {
-    id: "section4",
+    id: "design-process",
     title: "Design Process",
   },
-  { id: "section5", title: "Post Launch" },
 ];
 export const Project = () => {
   const { projectId } = useParams();
-  const [visibleSections, setVisibleSections] = useState<string[]>([]);
-  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  const [currentId, setCurrentId] = useState("project-summary");
+  const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
   useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        const visibleNow = entries
-          .filter((entry) => entry.isIntersecting)
-          .map((entry) => entry.target.id);
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
 
-        setVisibleSections((prev) => {
-          const newVisible = [...new Set([...prev, ...visibleNow])];
-          return newVisible.filter((id) => visibleNow.includes(id));
-        });
-      },
-      { threshold: 0.1 }
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.target.id) {
+          setCurrentId(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
     );
 
     sections.forEach((section) => {
       const element = document.getElementById(section.id);
-      if (element) observerRef.current?.observe(element);
+      if (element) {
+        observer.observe(element);
+        sectionRefs.current[section.id] = element;
+      }
     });
 
-    return () => observerRef.current?.disconnect();
+    return () => {
+      sections.forEach((section) => {
+        if (sectionRefs.current[section.id]) {
+          observer.unobserve(sectionRefs.current[section.id]!);
+        }
+      });
+    };
   }, []);
 
   const handleClick = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    element?.scrollIntoView({ behavior: "smooth" });
+    setCurrentId(id);
   };
   const project = mainProjects.find(
     (project) => project.id === Number(projectId)
   );
   return (
-    <section className="flex mt-10">
-      <aside className="sticky w-1/5 h-screen p-4 overflow-auto top-32">
+    <section className="mt-16 ">
+      <aside className="fixed w-1/5 h-screen p-4 overflow-auto left-5">
         <Link to={"/"}>
-          <Button>Back</Button>
+          <Button>
+            <ArrowBack className="mr-1" /> Back
+          </Button>
         </Link>
-        <nav>
+        <nav className="mt-10">
           <ul>
             {sections.map((section) => (
-              <li key={section.id} className="mb-2">
+              <li key={section.id} className="mb-4 ">
                 <Link
                   to={`#${section.id}`}
-                  className={`block p-2 rounded ${
-                    visibleSections[0] === section.id
+                  className={` ${
+                    currentId === section.id
                       ? "text-accent-foreground"
-                      : "hover:text-accent-foreground"
+                      : "hover:text-accent-foreground text-secondary-foreground text-base  font-normal"
                   }`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleClick(section.id);
-                  }}
+                  onClick={() => handleClick(section.id)}
                 >
                   {section.title}
                 </Link>
@@ -81,29 +95,50 @@ export const Project = () => {
           </ul>
         </nav>
       </aside>
-      <div className="flex-1 pl-4 pr-60">
-        {sections.map((section) => (
-          <section key={section.id} id={section.id} className="mb-16">
-            <h1 className="mb-4 text-3xl font-semibold text-primary-foreground">
-              Improve cart conversion from 26.3% to 40%.
-            </h1>
-            <h2 className="text-xl font-medium text-secondary-accent-foreground">
-              {section.title}
-            </h2>
-            <div className="">
-              {project?.summary?.map((summary) => {
-                return (
-                  <p
-                    key={summary.id}
-                    className="mt-2 text-sm text-secondary-foreground"
-                  >
-                    {summary.desc}
-                  </p>
-                );
-              })}
-            </div>
-          </section>
-        ))}
+      <div className="flex flex-col mx-56 mt-4 border-b max-w-7xl border-b-border-color pb-14">
+        <h1 className="mb-2 text-4xl font-semibold text-primary-foreground">
+          {project?.title}
+        </h1>
+        <div id="project-summary">
+          <SubHeading> Project Summary</SubHeading>
+          <div className="flex flex-col space-y-2 ">
+            {project?.summary?.map((summary) => {
+              return (
+                <p
+                  key={summary.id}
+                  className="text-sm font-normal leading-6 text-secondary-foreground"
+                >
+                  {summary.desc}
+                </p>
+              );
+            })}
+          </div>
+        </div>
+        <div id="context">
+          <SubHeading> Context</SubHeading>
+          <div>
+            <img
+              src={project?.asset.src}
+              alt={project?.asset.alt}
+              className="object-contain "
+            />
+            <p className="mt-6 text-sm font-normal leading-6 text-secondary-foreground">
+              {project?.context_desc}{" "}
+            </p>
+          </div>
+        </div>
+        <div id="discovery">
+          <SubHeading> Discovery</SubHeading>
+          <p className="text-sm font-normal leading-6 text-secondary-foreground">
+            {project?.discovery}
+          </p>
+        </div>
+        <div id="design-process">
+          <SubHeading> Design Process</SubHeading>
+          <p className="text-sm font-normal leading-6 text-secondary-foreground">
+            {project?.design_process}
+          </p>
+        </div>
       </div>
     </section>
   );

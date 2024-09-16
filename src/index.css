@@ -14,5 +14,6 @@
   html,
   body {
     font-family: "TT Commons", sans-serif;
+    scroll-behavior: smooth;
   }
 }
