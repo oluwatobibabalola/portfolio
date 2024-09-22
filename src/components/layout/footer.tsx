@@ -39,8 +39,10 @@ export const Footer = () => {
             Resume/CV
           </p>
           <Link
-            to="/"
             className="flex items-center text-lg text-primary-foreground hover:text-accent-foreground group"
+            to="/src/assets/cv.pdf"
+            download="Oluwatobi-Babalola.pdf"
+            target="_blank"
           >
             Oluwatobi’s CV
             <ArrowUp className=" text-primary-foreground group-hover:text-accent-foreground" />

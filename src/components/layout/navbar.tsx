@@ -66,9 +66,15 @@ export const Navbar = () => {
               </a>
             </li>
             <li>
-              <button className="transition-colors text-secondary-foreground hover:text-accent-foreground">
-                my resume
-              </button>
+              <Link
+                to="/src/assets/cv.pdf"
+                download="Oluwatobi-Babalola.pdf"
+                target="_blank"
+              >
+                <button className="transition-colors text-secondary-foreground hover:text-accent-foreground">
+                  my resume
+                </button>
+              </Link>
             </li>
           </ul>
         </div>

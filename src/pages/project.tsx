@@ -1,9 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import { mainProjects } from "../data/main-projects";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
 import { ArrowBack } from "../components/icons";
 import { SubHeading } from "../components/ui/sub-heading";
+import { useInView } from "react-intersection-observer";
+
 const sections = [
   {
     id: "project-summary",
@@ -16,57 +18,43 @@ const sections = [
     title: "Design Process",
   },
 ];
+
 export const Project = () => {
   const { projectId } = useParams();
-
   const [currentId, setCurrentId] = useState("project-summary");
-  const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5,
-    };
+  const project = mainProjects.find(
+    (project) => project.id === Number(projectId)
+  );
 
-    const observerCallback: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.target.id) {
-          setCurrentId(entry.target.id);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions
-    );
-
-    sections.forEach((section) => {
-      const element = document.getElementById(section.id);
-      if (element) {
-        observer.observe(element);
-        sectionRefs.current[section.id] = element;
-      }
+  // Helper to manage the intersection and scrolling logic for each section
+  const useSectionInView = (id: string) => {
+    const { ref, inView } = useInView({
+      threshold: 0.6,
+      triggerOnce: false,
     });
 
-    return () => {
-      sections.forEach((section) => {
-        if (sectionRefs.current[section.id]) {
-          observer.unobserve(sectionRefs.current[section.id]!);
-        }
-      });
-    };
-  }, []);
+    useEffect(() => {
+      if (inView) {
+        setCurrentId(id);
+      }
+    }, [inView, id]);
+
+    return ref;
+  };
+
+  // Section refs using the helper hook
+  const projectSummaryRef = useSectionInView("project-summary");
+  const contextRef = useSectionInView("context");
+  const discoveryRef = useSectionInView("discovery");
+  const designProcessRef = useSectionInView("design-process");
 
   const handleClick = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: "smooth" });
     setCurrentId(id);
   };
-  const project = mainProjects.find(
-    (project) => project.id === Number(projectId)
-  );
+
   return (
     <section className="mt-16 ">
       <aside className="fixed w-1/5 h-screen p-4 overflow-auto left-5">
@@ -78,62 +66,64 @@ export const Project = () => {
         <nav className="mt-10">
           <ul>
             {sections.map((section) => (
-              <li key={section.id} className="mb-4 ">
-                <Link
-                  to={`#${section.id}`}
-                  className={` ${
+              <li key={section.id} className="mb-4">
+                <button
+                  className={`${
                     currentId === section.id
                       ? "text-accent-foreground"
-                      : "hover:text-accent-foreground text-secondary-foreground text-base  font-normal"
+                      : "hover:text-accent-foreground text-secondary-foreground text-base font-normal"
                   }`}
                   onClick={() => handleClick(section.id)}
                 >
                   {section.title}
-                </Link>
+                </button>
               </li>
             ))}
           </ul>
         </nav>
       </aside>
+
       <div className="flex flex-col mx-56 mt-4 border-b max-w-7xl border-b-border-color pb-14">
-        <h1 className="mb-2 text-4xl font-semibold text-primary-foreground">
+        <h1 className="mb-6 text-4xl font-semibold text-primary-foreground">
           {project?.title}
         </h1>
-        <div id="project-summary">
+
+        <div id="project-summary" ref={projectSummaryRef}>
           <SubHeading> Project Summary</SubHeading>
-          <div className="flex flex-col space-y-2 ">
-            {project?.summary?.map((summary) => {
-              return (
-                <p
-                  key={summary.id}
-                  className="text-sm font-normal leading-6 text-secondary-foreground"
-                >
-                  {summary.desc}
-                </p>
-              );
-            })}
+          <div className="flex flex-col space-y-2">
+            {project?.summary?.map((summary) => (
+              <p
+                key={summary.id}
+                className="text-sm font-normal leading-6 text-secondary-foreground"
+              >
+                {summary.desc}
+              </p>
+            ))}
           </div>
         </div>
-        <div id="context">
+
+        <div id="context" ref={contextRef}>
           <SubHeading> Context</SubHeading>
           <div>
             <img
               src={project?.asset.src}
               alt={project?.asset.alt}
-              className="object-contain "
+              className="object-contain"
             />
             <p className="mt-6 text-sm font-normal leading-6 text-secondary-foreground">
-              {project?.context_desc}{" "}
+              {project?.context_desc}
             </p>
           </div>
         </div>
-        <div id="discovery">
+
+        <div id="discovery" ref={discoveryRef}>
           <SubHeading> Discovery</SubHeading>
           <p className="text-sm font-normal leading-6 text-secondary-foreground">
             {project?.discovery}
           </p>
         </div>
-        <div id="design-process">
+
+        <div id="design-process" ref={designProcessRef}>
           <SubHeading> Design Process</SubHeading>
           <p className="text-sm font-normal leading-6 text-secondary-foreground">
             {project?.design_process}
