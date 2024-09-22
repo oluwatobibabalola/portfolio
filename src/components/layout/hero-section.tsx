@@ -19,10 +19,12 @@ export const HeroSection = () => {
       </h4>
       <div className="flex items-center justify-center gap-x-4">
         <Button>
-          Email me <ArrowUp className=" text-secondary-foreground" />
+          <span className=" group-hover:text-accent-foreground">Email me</span>
+          <ArrowUp className=" text-secondary-foreground group-hover:text-accent-foreground" />
         </Button>
         <Button>
-          LinkedIn <ArrowUp className=" text-secondary-foreground" />
+          <span className=" group-hover:text-accent-foreground">LinkedIn</span>{" "}
+          <ArrowUp className=" text-secondary-foreground group-hover:text-accent-foreground" />
         </Button>
       </div>
     </section>

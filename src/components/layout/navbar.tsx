@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
 import profilePic from "../../assets/profile-pic.png";
 export const Navbar = () => {
   return (
@@ -24,28 +25,45 @@ export const Navbar = () => {
           </div>
           <ul className="flex space-x-6 text-base font-normal">
             <li>
-              <Link
+              <NavLink
                 to="/"
-                className="transition-colors text-secondary-foreground hover:text-accent-foreground"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-accent-foreground"
+                    : "transition-colors text-secondary-foreground hover:text-accent-foreground"
+                }
               >
                 my case studies
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/profile"
-                className="transition-colors text-secondary-foreground hover:text-accent-foreground"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-accent-foreground"
+                    : "transition-colors text-secondary-foreground hover:text-accent-foreground"
+                }
               >
                 my profile
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
-                to="#footer"
-                className="transition-colors text-secondary-foreground hover:text-accent-foreground"
+              <a
+                href="#footer"
+                className={
+                  "transition-colors text-secondary-foreground hover:text-accent-foreground"
+                }
+                onClick={(e) => {
+                  e.preventDefault();
+                  const footer = document.getElementById("footer");
+                  if (footer) {
+                    footer.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 get in touch
-              </Link>
+              </a>
             </li>
             <li>
               <button className="transition-colors text-secondary-foreground hover:text-accent-foreground">
