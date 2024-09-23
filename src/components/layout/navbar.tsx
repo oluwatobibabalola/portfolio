@@ -1,7 +1,14 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import profilePic from "../../assets/profile-pic.png";
+import { useEffect } from "react";
 export const Navbar = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Ensure the page scrolls to top on every route change
+  }, [location]);
+
   return (
     <div className="sticky top-0 z-50 w-full pt-6 bg-white/70 backdrop-blur-md ">
       <nav className="w-full py-8 border rounded-full shadow-sm px-14 backdrop-blur-md bg-white/30 border-border-color">

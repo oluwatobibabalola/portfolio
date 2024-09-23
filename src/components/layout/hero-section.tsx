@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ArrowUp } from "../icons";
 import { Button } from "../ui/button";
 
@@ -18,14 +19,22 @@ export const HeroSection = () => {
         Farmerline and mPharma.
       </h4>
       <div className="flex items-center justify-center gap-x-4">
-        <Button>
-          <span className=" group-hover:text-accent-foreground">Email me</span>
-          <ArrowUp className=" text-secondary-foreground group-hover:text-accent-foreground" />
-        </Button>
-        <Button>
-          <span className=" group-hover:text-accent-foreground">LinkedIn</span>{" "}
-          <ArrowUp className=" text-secondary-foreground group-hover:text-accent-foreground" />
-        </Button>
+        <Link to="mailto:oluwatobibabalola18@gmail.com">
+          <Button>
+            <span className=" group-hover:text-accent-foreground">
+              Email me
+            </span>
+            <ArrowUp className=" text-secondary-foreground group-hover:text-accent-foreground" />
+          </Button>
+        </Link>
+        <Link to="https://www.linkedin.com">
+          <Button>
+            <span className=" group-hover:text-accent-foreground">
+              LinkedIn
+            </span>{" "}
+            <ArrowUp className=" text-secondary-foreground group-hover:text-accent-foreground" />
+          </Button>
+        </Link>
       </div>
     </section>
   );
