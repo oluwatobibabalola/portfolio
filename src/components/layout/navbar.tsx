@@ -10,7 +10,7 @@ export const Navbar = () => {
   }, [location]);
 
   return (
-    <div className="sticky top-0 z-50 w-full pt-6 bg-white/70 backdrop-blur-md ">
+    <div className="sticky top-0 z-50 w-full pt-20 bg-white/70 backdrop-blur-md ">
       <nav className="w-full py-8 border rounded-full shadow-sm px-14 backdrop-blur-md bg-white/30 border-border-color">
         <div className="flex items-center justify-between mx-auto">
           <div className="flex items-center space-x-4">
@@ -33,7 +33,7 @@ export const Navbar = () => {
           <ul className="flex space-x-6 text-base font-normal">
             <li>
               <NavLink
-                to="/"
+                to="/case-studies"
                 className={({ isActive }) =>
                   isActive
                     ? "text-accent-foreground"
