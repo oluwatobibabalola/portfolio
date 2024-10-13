@@ -4,14 +4,13 @@ import profilePic from "../../assets/profile-pic.png";
 import { useEffect } from "react";
 export const Navbar = () => {
   const location = useLocation();
-
   useEffect(() => {
     window.scrollTo(0, 0); // Ensure the page scrolls to top on every route change
   }, [location]);
 
   return (
-    <div className="sticky top-0 z-50 w-full pt-20 bg-white/70 backdrop-blur-md ">
-      <nav className="w-full py-8 border rounded-full shadow-sm px-14 backdrop-blur-md bg-white/30 border-border-color">
+    <div className="sticky top-0 z-50 w-full pt-16 bg-white/70 backdrop-blur-md ">
+      <nav className="w-full py-5 border rounded-full shadow-sm px-14 backdrop-blur-md bg-white/30 border-border-color">
         <div className="flex items-center justify-between mx-auto">
           <div className="flex items-center space-x-4">
             <Link to={"/"}>
@@ -35,7 +34,7 @@ export const Navbar = () => {
               <NavLink
                 to="/case-studies"
                 className={({ isActive }) =>
-                  isActive
+                  isActive || location.pathname.includes("case-studies")
                     ? "text-accent-foreground"
                     : "transition-colors text-secondary-foreground hover:text-accent-foreground"
                 }

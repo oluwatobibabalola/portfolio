@@ -5,7 +5,8 @@ import {
   TabsList,
   TabsTrigger,
 } from "../components/ui/tabs";
-import { mainProjects } from "../data/main-projects";
+import muttiPhoto from "../assets/mymutti.com.png";
+import bloomApp from "../assets/pharm-care.png";
 import { otherProjects } from "../data/other-projects";
 
 export const CaseStudies = () => {
@@ -20,35 +21,49 @@ export const CaseStudies = () => {
           <TabsTrigger value="other-projects">Other projects</TabsTrigger>
         </TabsList>
         <TabsContent value="main-projects">
-          <div className="space-y-4 ">
-            {mainProjects.map((project) => {
-              return (
-                <div
-                  key={project.id}
-                  className="flex flex-col items-center justify-center space-y-4 text-center "
-                >
-                  <Link
-                    to={project.link}
-                    target="_blank"
-                    className="text-sm font-normal text-secondary-foreground"
-                  >
-                    {project.name}
-                  </Link>
-                  <Link to={`/${project.id}`}>
-                    <p className="max-w-lg text-4xl font-semibold text-primary-foreground">
-                      {project.title}
-                    </p>
-                  </Link>
-                  <div>
-                    <img
-                      src={project.asset.src}
-                      alt={project.asset.alt}
-                      className="object-contain "
-                    />
-                  </div>
-                </div>
-              );
-            })}
+          <div className="grid gap-y-4">
+            <div className="flex flex-col items-center justify-center mb-20 text-center gap-y-4 ">
+              <Link
+                to="https://mymutti.com/"
+                target="_blank"
+                className="text-sm font-normal text-secondary-foreground"
+              >
+                mymutti.com
+              </Link>
+              <Link to={"mutti"}>
+                <p className="max-w-lg text-4xl font-semibold text-primary-foreground">
+                  Improve cart conversion from 26.3% to 40%.
+                </p>
+              </Link>
+              <div>
+                <img
+                  src={muttiPhoto}
+                  alt="Mutti logo"
+                  className="object-contain "
+                />
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-center mb-20 text-center gap-y-4 ">
+              <Link
+                to="/"
+                target="_blank"
+                className="text-sm font-normal text-secondary-foreground"
+              >
+                Internal tool
+              </Link>
+              <Link to={"case-studies/mutti"}>
+                <p className="max-w-lg text-4xl font-semibold text-primary-foreground">
+                  Customer activity report tool for pharmacists.
+                </p>
+              </Link>
+              <div>
+                <img
+                  src={bloomApp}
+                  alt="Bloom app logo"
+                  className="object-contain "
+                />
+              </div>
+            </div>
           </div>
         </TabsContent>
         <TabsContent value="other-projects">

@@ -9,6 +9,7 @@ export default {
         "secondary-foreground": "#384853",
         "accent-foreground": "#FEA12D",
         "secondary-accent-foreground": "#3362AB",
+        "tertiary-accent-foreground": "#023047",
       },
     },
   },

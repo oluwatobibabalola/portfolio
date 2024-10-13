@@ -22,7 +22,7 @@ export const Projects = () => {
               </Link>
               <Link to={`/${project.id}`}>
                 <p className="max-w-lg text-4xl font-semibold text-primary-foreground">
-                  {project.title}
+                  {project.heading}
                 </p>
               </Link>
               <div>

@@ -51,13 +51,17 @@ export const Project = () => {
 
   const handleClick = (id: string) => {
     const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: "smooth" });
+    element?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
     setCurrentId(id);
   };
 
   return (
-    <section className="mt-16 ">
-      <aside className="fixed w-1/5 h-screen p-4 overflow-auto left-5">
+    <section className="relative mt-16 ">
+      <aside className="fixed w-1/5 h-screen p-4 overflow-auto left-36">
         <Link to={"/"}>
           <Button>
             <ArrowBack className="mr-1" /> Back
@@ -85,7 +89,7 @@ export const Project = () => {
 
       <div className="flex flex-col mx-56 mt-4 border-b max-w-7xl border-b-border-color pb-14">
         <h1 className="mb-6 text-4xl font-semibold text-primary-foreground">
-          {project?.title}
+          {project?.heading}
         </h1>
 
         <div id="project-summary" ref={projectSummaryRef}>

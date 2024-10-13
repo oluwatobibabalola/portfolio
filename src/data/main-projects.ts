@@ -1,10 +1,10 @@
 import myMuttiPhoto from "../assets/mymutti.com.png";
-import bloomAppPhoto from "../assets/bloom_app.png";
+import bloomAppPhoto from "../assets/pharm-care.png";
 export const mainProjects = [
   {
     id: 1,
     link: "https://mymutti.com/",
-    title: "Improve cart conversion from 26.3% to 40%.",
+    heading: "Improve cart conversion from 26.3% to 40%.",
     name: "mymutti.com",
     asset: {
       src: myMuttiPhoto,
@@ -34,7 +34,7 @@ export const mainProjects = [
   {
     id: 2,
     link: "/",
-    title: "Customer activity report tool for pharmacists.",
+    heading: "Customer activity report tool for pharmacists.",
     name: "Bloom App",
     asset: {
       src: bloomAppPhoto,
