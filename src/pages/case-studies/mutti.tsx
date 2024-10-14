@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
 import { Button } from "../../components/ui/button";
 import { ArrowBack } from "../../components/icons";
 import { ProjectTitle } from "../../components/ui/case-studies/project-title";
@@ -8,59 +6,25 @@ import { Paragraph } from "../../components/ui/case-studies/paragraph";
 import { Card } from "../../components/ui/case-studies/card";
 import muttiLandingPage from "../../assets/case-studies/mutti-landing-page.png";
 import { ImageComponent } from "../../components/ui/case-studies/image-component";
+import { TSectionItem } from "../../types";
+import { useVisibleSection } from "../../hooks/useVisibleSection";
+import { SideMenu } from "../../components/ui/case-studies/side-menu";
 
-const sections: { id: string; title: string }[] = [
-  { id: "title-1", title: "Summary" },
-  { id: "title-2", title: "Product impact" },
-  { id: "title-3", title: "My Role" },
-  { id: "title-4", title: "What I did" },
-  { id: "title-5", title: "Who I worked with" },
-  { id: "title-6", title: "Challenge" },
-  { id: "title-7", title: "User Interview Questions" },
-  { id: "title-8", title: "Insights & Solutions" },
-  { id: "title-9", title: "User testing" },
-  { id: "title-10", title: "Learnings" },
+const sections: TSectionItem[] = [
+  { id: "section1", title: "Summary" },
+  { id: "section2", title: "Product impact" },
+  { id: "section3", title: "My Role" },
+  { id: "section4", title: "What I did" },
+  { id: "section5", title: "Who I worked with" },
+  { id: "section6", title: "Challenge" },
+  { id: "section7", title: "User Interview Questions" },
+  { id: "section8", title: "Insights & Solutions" },
+  { id: "section9", title: "User testing" },
+  { id: "section10", title: "Learnings" },
 ];
 
 export const Mutti = () => {
-  const [currentId, setCurrentId] = useState("title-1");
-
-  // Helper to manage the intersection and scrolling logic for each section
-  const useSectionInView = (id: string) => {
-    const { ref, inView } = useInView({
-      threshold: 0.6,
-      triggerOnce: false,
-    });
-
-    useEffect(() => {
-      if (inView) {
-        setCurrentId(id);
-      }
-    }, [inView, id]);
-
-    return ref;
-  };
-
-  const ref1 = useSectionInView("title-1");
-  const ref2 = useSectionInView("title-2");
-  const ref3 = useSectionInView("title-3");
-  const ref4 = useSectionInView("title-4");
-  const ref5 = useSectionInView("title-5");
-  const ref6 = useSectionInView("title-6");
-  const ref7 = useSectionInView("title-7");
-  const ref8 = useSectionInView("title-8");
-  const ref9 = useSectionInView("title-9");
-  const ref10 = useSectionInView("title-10");
-
-  const handleClick = (id: string) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest",
-    });
-    setCurrentId(id);
-  };
+  const visibleSection = useVisibleSection(sections);
 
   return (
     <section className="relative ">
@@ -72,24 +36,7 @@ export const Mutti = () => {
             </Button>
           </Link>
         </div>
-        <nav className="overflow-auto">
-          <ul>
-            {sections.map((section) => (
-              <li key={section.id} className="mb-2">
-                <button
-                  className={`text-base font-normal ${
-                    currentId === section.id
-                      ? "text-tertiary-accent-foreground"
-                      : "hover:text-tertiary-accent-foreground text-[#889198] "
-                  }`}
-                  onClick={() => handleClick(section.id)}
-                >
-                  {section.title}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <SideMenu sections={sections} visibleSection={visibleSection} />
       </aside>
 
       <div className="flex flex-col pb-8 mx-56 mt-4 mb-10 border-b max-w-7xl border-b-border-color">
@@ -97,7 +44,7 @@ export const Mutti = () => {
           Product inventory management system for mymutti
         </h1>
 
-        <div id="title-1" ref={ref1}>
+        <div id="section1">
           <ProjectTitle> Summary</ProjectTitle>
           <div className="flex flex-col space-y-2">
             <Paragraph>
@@ -113,7 +60,7 @@ export const Mutti = () => {
             </Paragraph>
           </div>
         </div>
-        <div id="title-2" ref={ref2}>
+        <div id="section2">
           <ProjectTitle>Product impact</ProjectTitle>
           <div className="grid space-y-4 ">
             <Card
@@ -127,7 +74,7 @@ because it was previously an engineering task."
             />
           </div>
         </div>
-        <div id="title-3" ref={ref3}>
+        <div id="section3">
           <ProjectTitle>My Role</ProjectTitle>
           <div className="flex flex-col space-y-2">
             <Paragraph>
@@ -141,7 +88,7 @@ because it was previously an engineering task."
             </Paragraph>
           </div>
         </div>
-        <div id="title-4" ref={ref4}>
+        <div id="section4">
           <ProjectTitle>What I did</ProjectTitle>
           <div className="flex flex-col space-y-2">
             <Paragraph>
@@ -149,7 +96,7 @@ because it was previously an engineering task."
             </Paragraph>
           </div>
         </div>
-        <div id="title-5" ref={ref5}>
+        <div id="section5">
           <ProjectTitle>Who I worked with</ProjectTitle>
           <div className="flex flex-col gap-y-2">
             <Paragraph>
@@ -165,7 +112,7 @@ because it was previously an engineering task."
             </div>
           </div>
         </div>
-        <div id="title-6" ref={ref6}>
+        <div id="section6">
           <ProjectTitle>Challenge</ProjectTitle>
           <div className="flex flex-col gap-y-2">
             <Paragraph>
@@ -191,7 +138,7 @@ because it was previously an engineering task."
             </Paragraph>
           </div>
         </div>
-        <div id="title-7" ref={ref7}>
+        <div id="section7">
           <ProjectTitle>User interview questions</ProjectTitle>
           <div className="grid space-y-4 ">
             <Card
@@ -210,7 +157,7 @@ and needs to be on sale."
             />
           </div>
         </div>
-        <div id="title-8" ref={ref8}>
+        <div id="section8">
           <ProjectTitle>Insights & Solution</ProjectTitle>
           <div className="flex flex-col gap-y-2">
             <Paragraph>
@@ -232,12 +179,12 @@ and needs to be on sale."
             </div>
           </div>
         </div>
-        <div id="title-9" ref={ref9}>
+        <div id="section9">
           <ProjectTitle>User testing</ProjectTitle>
           <div className="flex flex-col gap-y-2">
-            <Paragraph>
+            <div className="text-sm font-normal leading-6 text-tertiary-accent-foreground">
               <span> Findings from the user testing session were:</span>
-              <ol className="mt-6 space-y-1 list-decimal list-inside">
+              <ol className="pl-2 mt-6 space-y-1 list-decimal">
                 <li>
                   Users would like to switch between countries since they manage
                   multiple countries.{" "}
@@ -256,7 +203,7 @@ and needs to be on sale."
                   to technical issues.
                 </li>
               </ol>
-            </Paragraph>
+            </div>
             <div className="mt-10 ">
               <ImageComponent
                 src={muttiLandingPage}
@@ -266,7 +213,7 @@ and needs to be on sale."
             </div>
           </div>
         </div>
-        <div id="title-10" ref={ref10}>
+        <div id="section10">
           <ProjectTitle>Learning</ProjectTitle>
           <Paragraph>
             Collaborate with users to get a usable product. <br />

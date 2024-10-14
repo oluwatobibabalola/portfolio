@@ -9,9 +9,9 @@ export const ImageComponent = ({ src, alt, caption }: ImageProps) => {
       <div className=" rounded-md shadow p-8 bg-[#F7F7F8]">
         <img src={src} alt={alt} className="object-contain" />
       </div>
-      <caption className="text-xs font-normal leading-6 text-secondary-foreground">
+      <p className="text-xs font-normal leading-6 text-secondary-foreground">
         {caption}
-      </caption>
+      </p>
     </div>
   );
 };
