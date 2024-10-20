@@ -4,9 +4,9 @@ export const Footer = () => {
   return (
     <footer
       id="footer"
-      className="flex flex-col items-center max-w-2xl py-10 space-y-4"
+      className="flex flex-col items-center max-w-2xl py-10 space-y-4 md:max-w-96 lg:max-w-xl xl:max-w-2xl "
     >
-      <p className="text-3xl font-semibold text-center text-primary-foreground">
+      <p className="text-2xl font-semibold text-center md:text-3xl text-primary-foreground">
         Thank you for reading through. I would be happy to chat if you have
         questions.
       </p>

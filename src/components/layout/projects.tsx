@@ -21,7 +21,7 @@ export const Projects = () => {
                 {project.name}
               </Link>
               <Link to={`/${project.id}`}>
-                <p className="max-w-lg text-4xl font-semibold text-primary-foreground">
+                <p className="px-10 text-2xl font-semibold md:px-0 md:max-w-lg md:text-4xl text-primary-foreground">
                   {project.heading}
                 </p>
               </Link>

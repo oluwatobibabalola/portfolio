@@ -1,13 +1,59 @@
+import { Link } from "react-router-dom";
 import { HeroSection } from "../components/layout/hero-section";
 import { OtherProjects } from "../components/layout/other-projects";
-import { Projects } from "../components/layout/projects";
+import muttiPhoto from "../assets/mymutti.com.png";
+import bloomApp from "../assets/pharm-care.png";
+import { PageBody } from "../components/layout/page-body";
 
 export const Home = () => {
   return (
-    <div className="max-w-5xl pb-12 space-y-12 border-b border-b-border-color">
+    <PageBody>
       <HeroSection />
-      <Projects />
+      <div className="grid gap-y-4">
+        <div className="flex flex-col items-center justify-center mb-20 text-center gap-y-4 ">
+          <Link
+            to="https://mymutti.com/"
+            target="_blank"
+            className="text-sm font-normal text-secondary-foreground"
+          >
+            mymutti.com
+          </Link>
+          <Link to={"case-studies/mutti"}>
+            <p className="px-10 text-2xl font-semibold md:px-0 md:max-w-lg md:text-4xl text-primary-foreground">
+              Improve cart conversion from 26.3% to 40%.
+            </p>
+          </Link>
+          <div>
+            <img
+              src={muttiPhoto}
+              alt="Mutti logo"
+              className="object-contain "
+            />
+          </div>
+        </div>
+        <div className="flex flex-col items-center justify-center text-center md:mb-20 gap-y-4 ">
+          <Link
+            to="/"
+            target="_blank"
+            className="text-sm font-normal text-secondary-foreground"
+          >
+            Internal tool
+          </Link>
+          <Link to={"case-studies/mutti"}>
+            <p className="px-10 text-2xl font-semibold md:px-0 md:max-w-lg md:text-4xl text-primary-foreground">
+              Customer activity report tool for pharmacists.
+            </p>
+          </Link>
+          <div>
+            <img
+              src={bloomApp}
+              alt="Bloom app logo"
+              className="object-contain "
+            />
+          </div>
+        </div>
+      </div>
       <OtherProjects />
-    </div>
+    </PageBody>
   );
 };

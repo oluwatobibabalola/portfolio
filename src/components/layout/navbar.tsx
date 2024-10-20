@@ -2,6 +2,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 
 import profilePic from "../../assets/profile-pic.png";
 import { useEffect } from "react";
+import { MobileNavbar } from "./mobile-navbar";
 export const Navbar = () => {
   const location = useLocation();
   useEffect(() => {
@@ -9,27 +10,28 @@ export const Navbar = () => {
   }, [location]);
 
   return (
-    <div className="sticky top-0 z-50 w-full pt-16 bg-white/70 backdrop-blur-md ">
-      <nav className="w-full py-5 border rounded-full shadow-sm px-14 backdrop-blur-md bg-white/30 border-border-color">
+    <div className="sticky top-0 z-50 w-full pt-10 lg:pt-16 bg-white/70 backdrop-blur-md ">
+      <nav className="w-full px-6 py-5 border rounded-full shadow-sm lg:px-14 backdrop-blur-md bg-white/30 border-border-color">
         <div className="flex items-center justify-between mx-auto">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 md:space-x-4">
             <Link to={"/"}>
               <img
-                className="object-cover rounded-full size-16 -scale-x-100"
+                className="object-cover rounded-full md:size-16 size-10 -scale-x-100"
                 src={profilePic}
                 alt="Olowatobi Babalola"
               />
             </Link>
-            <div>
-              <h2 className="text-base font-medium text-primary-foreground">
+            <div className="flex flex-col items-start">
+              <h2 className="text-sm font-medium md:text-base text-primary-foreground">
                 Oluwatobi Babalola
               </h2>
-              <p className="text-sm font-normal text-secondary-foreground">
+              <p className="text-xs font-normal md:text-sm text-secondary-foreground">
                 Product & Interaction Designer
               </p>
             </div>
           </div>
-          <ul className="flex space-x-6 text-base font-normal">
+          <MobileNavbar />
+          <ul className="hidden space-x-6 text-base font-normal md:flex">
             <li>
               <NavLink
                 to="/case-studies"

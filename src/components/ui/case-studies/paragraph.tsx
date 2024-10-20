@@ -10,7 +10,7 @@ export const Paragraph = ({ children, className, ...props }: Props) => {
     <p
       {...props}
       className={cn(
-        "text-sm font-normal leading-6 text-tertiary-accent-foreground",
+        "text-base font-normal leading-6 text-tertiary-accent-foreground",
         className
       )}
     >

@@ -28,7 +28,7 @@ export const Mutti = () => {
 
   return (
     <section className="relative ">
-      <aside className="fixed h-screen px-5 overflow-auto w-80">
+      <aside className="fixed hidden h-screen px-5 overflow-auto w-80 md:block ">
         <div className="my-10 ">
           <Link to={"/case-studies"}>
             <Button>
@@ -39,8 +39,15 @@ export const Mutti = () => {
         <SideMenu sections={sections} visibleSection={visibleSection} />
       </aside>
 
-      <div className="flex flex-col pb-8 mx-56 mt-4 mb-10 border-b max-w-7xl border-b-border-color">
-        <h1 className="mb-6 text-4xl font-semibold text-tertiary-accent-foreground">
+      <div className="flex flex-col pb-8 mt-4 mb-10 border-b md:mx-56 max-w-7xl border-b-border-color">
+        <div className="flex md:hidden">
+          <Link to={"/case-studies"}>
+            <Button className="px-0 border-0">
+              <ArrowBack className="mr-1" /> Back
+            </Button>
+          </Link>
+        </div>
+        <h1 className="text-2xl font-semibold md:mb-6 md:text-4xl text-tertiary-accent-foreground">
           Product inventory management system for mymutti
         </h1>
 

@@ -11,7 +11,7 @@ import { Mutti } from "./pages/case-studies/mutti";
 
 function App() {
   return (
-    <section className="flex flex-col items-center px-36 ">
+    <section className="flex flex-col items-center px-6 xl:px-36 lg:px-16 md:px-10 ">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
