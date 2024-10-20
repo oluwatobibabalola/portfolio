@@ -15,12 +15,6 @@ export function useVisibleSection(sections: Array<TSectionItem>) {
         height: window.innerHeight,
         width: window.innerWidth,
       };
-      console.log(
-        `viewPortHeight: ${viewPort.height}, viewPortWidth: ${viewPort.width}`,
-        `top:${sectionPosition.top}`,
-        `bottom: ${sectionPosition.bottom}`,
-        `section:${elementId}`
-      );
 
       return (
         sectionPosition.top >= 0 &&
