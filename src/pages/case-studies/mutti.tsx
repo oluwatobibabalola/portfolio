@@ -40,7 +40,7 @@ export const Mutti = () => {
       </aside>
 
       <div className="flex flex-col pb-8 mt-4 mb-10 border-b md:mx-56 max-w-7xl border-b-border-color">
-        <div className="flex md:hidden">
+        <div className="flex my-4 md:hidden">
           <Link to={"/case-studies"}>
             <Button className="px-0 border-0">
               <ArrowBack className="mr-1" /> Back

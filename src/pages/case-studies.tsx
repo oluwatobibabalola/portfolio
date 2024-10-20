@@ -24,16 +24,12 @@ export const CaseStudies = () => {
         <TabsContent value="main-projects">
           <div className="grid gap-y-4">
             <div className="flex flex-col items-center justify-center mb-20 text-center gap-y-4 ">
-              <Link
-                to="https://mymutti.com/"
-                target="_blank"
-                className="text-sm font-normal text-secondary-foreground"
-              >
+              <p className="text-sm font-normal text-secondary-foreground">
                 mymutti.com
-              </Link>
+              </p>
               <Link to={"mutti"}>
                 <p className="px-4 text-2xl font-semibold md:px-0 md:max-w-lg md:text-4xl text-primary-foreground">
-                  Improve cart conversion from 26.3% to 40%.
+                  Product inventory management system for mymutti
                 </p>
               </Link>
               <div>
@@ -45,13 +41,9 @@ export const CaseStudies = () => {
               </div>
             </div>
             <div className="flex flex-col items-center justify-center mb-20 text-center gap-y-4 ">
-              <Link
-                to="/"
-                target="_blank"
-                className="text-sm font-normal text-secondary-foreground"
-              >
+              <p className="text-sm font-normal text-secondary-foreground">
                 Internal tool
-              </Link>
+              </p>
               <Link to={"mutti"}>
                 <p className="px-4 text-2xl font-semibold md:px-0 md:max-w-lg md:text-4xl text-primary-foreground">
                   Customer activity report tool for pharmacists.

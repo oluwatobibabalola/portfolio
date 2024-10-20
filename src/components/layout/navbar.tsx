@@ -57,21 +57,12 @@ export const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <a
-                href="#footer"
-                className={
-                  "transition-colors text-secondary-foreground hover:text-accent-foreground"
-                }
-                onClick={(e) => {
-                  e.preventDefault();
-                  const footer = document.getElementById("footer");
-                  if (footer) {
-                    footer.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
+              <Link
+                className="transition-colors  text-secondary-foreground hover:text-accent-foreground"
+                to="mailto:oluwatobibabalola18@gmail.com"
               >
-                get in touch
-              </a>
+                email me
+              </Link>
             </li>
             <li>
               <Link
