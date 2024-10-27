@@ -24,7 +24,7 @@ export const HeroSection = () => {
             <span className="text-xs group-hover:text-accent-foreground md:text-sm">
               Email me
             </span>
-            <ArrowUp className=" text-secondary-foreground group-hover:text-accent-foreground size-6 md:size-8" />
+            <ArrowUp className="duration-300 ease-in-out group-hover:rotate-45 text-secondary-foreground group-hover:text-accent-foreground size-6 md:size-8" />
           </Button>
         </Link>
         <Link to="https://www.linkedin.com">
@@ -32,7 +32,7 @@ export const HeroSection = () => {
             <span className="text-xs group-hover:text-accent-foreground md:text-base">
               LinkedIn
             </span>{" "}
-            <ArrowUp className=" text-secondary-foreground group-hover:text-accent-foreground size-6 md:size-8" />
+            <ArrowUp className="duration-300 ease-in-out text-secondary-foreground group-hover:text-accent-foreground size-6 md:size-8 group-hover:rotate-45" />
           </Button>
         </Link>
       </div>
