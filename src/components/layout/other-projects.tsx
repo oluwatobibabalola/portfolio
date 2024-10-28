@@ -1,5 +1,8 @@
+import { motion } from "framer-motion";
 import { otherProjects } from "../../data/other-projects";
 import { SectionHeader } from "../ui/section-header";
+import { fadeInAnimationSettings } from "../../animations/config";
+import { fadeIn } from "../../animations/variants";
 
 export const OtherProjects = () => {
   return (
@@ -8,7 +11,16 @@ export const OtherProjects = () => {
       <div className="flex flex-col items-center justify-between gap-x-10 md:flex-row gap-y-6 ">
         {otherProjects.map((project) => {
           return (
-            <div key={project.id} className="flex flex-col space-y-1 ">
+            <motion.div
+              key={project.id}
+              className="flex flex-col space-y-1 "
+              variants={fadeIn({
+                direction:
+                  project.id === 1 ? "right" : project.id === 2 ? "up" : "left",
+                duration: 1.5,
+              })}
+              {...fadeInAnimationSettings}
+            >
               <p className="text-sm font-normal text-secondary-foreground">
                 {project.year}
               </p>
@@ -18,7 +30,7 @@ export const OtherProjects = () => {
               <p className="text-sm font-normal text-secondary-foreground">
                 {project.type}
               </p>
-            </div>
+            </motion.div>
           );
         })}
       </div>

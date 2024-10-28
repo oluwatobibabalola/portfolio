@@ -3,6 +3,8 @@ import { HeroSection } from "../components/layout/hero-section";
 import { OtherProjects } from "../components/layout/other-projects";
 import { PageBody } from "../components/layout/page-body";
 import { mainProjects } from "../data/main-projects";
+import { motion } from "framer-motion";
+import { fadeIn } from "../animations/variants";
 
 export const Home = () => {
   return (
@@ -12,9 +14,12 @@ export const Home = () => {
       <div className="grid gap-y-4">
         {mainProjects.map((project) => {
           return (
-            <div
+            <motion.div
               key={project.id}
               className="flex flex-col items-center justify-center mb-20 text-center gap-y-4 "
+              variants={fadeIn({ direction: "up" })}
+              initial="hidden"
+              whileInView="show"
             >
               <p className="text-sm font-normal text-secondary-foreground">
                 {project.name}
@@ -31,7 +36,7 @@ export const Home = () => {
                   className="object-contain "
                 />
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
