@@ -9,6 +9,9 @@ import { ImageComponent } from "../../components/ui/case-studies/image-component
 import { TSectionItem } from "../../types";
 import { useVisibleSection } from "../../hooks/useVisibleSection";
 import { SideMenu } from "../../components/ui/case-studies/side-menu";
+import { motion } from "framer-motion";
+import { fadeInAnimationSettings } from "../../animations/config";
+import { fadeIn } from "../../animations/variants";
 
 const sections: TSectionItem[] = [
   { id: "section1", title: "Summary" },
@@ -28,7 +31,12 @@ export const Mutti = () => {
 
   return (
     <section className="relative ">
-      <aside className="fixed hidden h-screen px-5 overflow-auto w-80 md:block ">
+      <motion.aside
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.3, type: "tween", ease: "easeInOut" }}
+        className="fixed hidden h-screen px-5 overflow-auto w-80 md:block "
+      >
         <div className="my-10 ">
           <Link to={"/case-studies"}>
             <Button>
@@ -37,9 +45,14 @@ export const Mutti = () => {
           </Link>
         </div>
         <SideMenu sections={sections} visibleSection={visibleSection} />
-      </aside>
+      </motion.aside>
 
-      <div className="flex flex-col pb-8 mt-4 mb-10 border-b md:mx-56 max-w-7xl border-b-border-color">
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.3, type: "tween", ease: "easeInOut" }}
+        className="flex flex-col pb-8 mt-4 mb-10 border-b md:mx-56 max-w-7xl border-b-border-color"
+      >
         <div className="flex my-4 md:hidden">
           <Link to={"/case-studies"}>
             <Button className="px-0 border-0">
@@ -67,7 +80,11 @@ export const Mutti = () => {
             </Paragraph>
           </div>
         </div>
-        <div id="section2">
+        <motion.div
+          variants={fadeIn({ direction: "up", delay: 0.1 })}
+          {...fadeInAnimationSettings}
+          id="section2"
+        >
           <ProjectTitle>Product impact</ProjectTitle>
           <div className="grid space-y-4 ">
             <Card
@@ -80,8 +97,12 @@ export const Mutti = () => {
 because it was previously an engineering task."
             />
           </div>
-        </div>
-        <div id="section3">
+        </motion.div>
+        <motion.div
+          variants={fadeIn({ direction: "up", delay: 0.1 })}
+          {...fadeInAnimationSettings}
+          id="section3"
+        >
           <ProjectTitle>My Role</ProjectTitle>
           <div className="flex flex-col space-y-2">
             <Paragraph>
@@ -94,16 +115,24 @@ because it was previously an engineering task."
               smooth experience for the stakeholders involved.
             </Paragraph>
           </div>
-        </div>
-        <div id="section4">
+        </motion.div>
+        <motion.div
+          variants={fadeIn({ direction: "up", delay: 0.1 })}
+          {...fadeInAnimationSettings}
+          id="section4"
+        >
           <ProjectTitle>What I did</ProjectTitle>
           <div className="flex flex-col space-y-2">
             <Paragraph>
               User interview, UI design, prototyping, and user testing.
             </Paragraph>
           </div>
-        </div>
-        <div id="section5">
+        </motion.div>
+        <motion.div
+          variants={fadeIn({ direction: "up", delay: 0.1 })}
+          {...fadeInAnimationSettings}
+          id="section5"
+        >
           <ProjectTitle>Who I worked with</ProjectTitle>
           <div className="flex flex-col gap-y-2">
             <Paragraph>
@@ -118,8 +147,12 @@ because it was previously an engineering task."
               />
             </div>
           </div>
-        </div>
-        <div id="section6">
+        </motion.div>
+        <motion.div
+          variants={fadeIn({ direction: "up", delay: 0.1 })}
+          {...fadeInAnimationSettings}
+          id="section6"
+        >
           <ProjectTitle>Challenge</ProjectTitle>
           <div className="flex flex-col gap-y-2">
             <Paragraph>
@@ -144,8 +177,12 @@ because it was previously an engineering task."
               product inventory without input from engineering?”
             </Paragraph>
           </div>
-        </div>
-        <div id="section7">
+        </motion.div>
+        <motion.div
+          variants={fadeIn({ direction: "up", delay: 0.1 })}
+          {...fadeInAnimationSettings}
+          id="section7"
+        >
           <ProjectTitle>User interview questions</ProjectTitle>
           <div className="grid space-y-4 ">
             <Card
@@ -163,8 +200,12 @@ and also the challenges they face during the entire process."
 and needs to be on sale."
             />
           </div>
-        </div>
-        <div id="section8">
+        </motion.div>
+        <motion.div
+          variants={fadeIn({ direction: "up", delay: 0.1 })}
+          {...fadeInAnimationSettings}
+          id="section8"
+        >
           <ProjectTitle>Insights & Solution</ProjectTitle>
           <div className="flex flex-col gap-y-2">
             <Paragraph>
@@ -185,8 +226,12 @@ and needs to be on sale."
               />
             </div>
           </div>
-        </div>
-        <div id="section9">
+        </motion.div>
+        <motion.div
+          variants={fadeIn({ direction: "up", delay: 0.1 })}
+          {...fadeInAnimationSettings}
+          id="section9"
+        >
           <ProjectTitle>User testing</ProjectTitle>
           <div className="flex flex-col gap-y-2">
             <div className="text-sm font-normal leading-6 text-tertiary-accent-foreground">
@@ -219,8 +264,12 @@ and needs to be on sale."
               />
             </div>
           </div>
-        </div>
-        <div id="section10">
+        </motion.div>
+        <motion.div
+          variants={fadeIn({ direction: "up", delay: 0.1 })}
+          {...fadeInAnimationSettings}
+          id="section10"
+        >
           <ProjectTitle>Learning</ProjectTitle>
           <Paragraph>
             Collaborate with users to get a usable product. <br />
@@ -231,8 +280,8 @@ and needs to be on sale."
             has become a tool different teams(product, marketing, operations) in
             the organisation can use.
           </Paragraph>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
