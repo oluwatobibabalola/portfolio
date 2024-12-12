@@ -33,27 +33,7 @@ export const mainProjects = [
   },
   {
     id: 2,
-    link: "/case-studies/mutti",
-    heading: "Customer activity report tool for pharmacists.",
-    name: "Bloom App",
-    asset: {
-      src: bloomAppPhoto,
-      alt: "bloom app screenshot",
-    },
-  },
-  {
-    id: 3,
-    link: "/case-studies/mutti",
-    heading: "Improve cart conversion from 26.3% to 40%.",
-    name: "mymutti.com",
-    asset: {
-      src: myMuttiPhoto,
-      alt: "mymutti.com screenshot",
-    },
-  },
-  {
-    id: 4,
-    link: "/case-studies/mutti",
+    link: "",
     heading: "Customer activity report tool for pharmacists.",
     name: "Bloom App",
     asset: {

@@ -33,7 +33,7 @@ export const CaseStudies = () => {
                     variants={fadeIn({ direction: "up" })}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, amount: 0.7 }}
+                    viewport={{ once: true, amount: 0.2 }}
                   >
                     <p className="text-sm font-normal text-secondary-foreground">
                       {project.name}
