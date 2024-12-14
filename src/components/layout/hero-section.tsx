@@ -25,7 +25,7 @@ export const HeroSection = () => {
     <section className="flex-col items-center justify-center pt-10 space-y-6 text-center">
       <TypewriterEffectSmooth words={words} />
       <motion.h2
-        className="text-2xl font-semibold md:text-6xl text-primary-foreground"
+        className="text-2xl font-semibold md:text-[64px] md:leading-[76px] text-primary-foreground"
         variants={fadeIn({ direction: "right" })}
         {...fadeInAnimationSettings}
       >
@@ -33,7 +33,7 @@ export const HeroSection = () => {
         user needs and business goals.
       </motion.h2>
       <motion.h4
-        className="px-6 text-base font-normal md:text-xl md:px-28 text-secondary-foreground"
+        className="px-6 text-base font-normal md:text-[20px] md:leading-[32px] md:px-28 text-secondary-foreground"
         variants={fadeIn({ direction: "left" })}
         {...fadeInAnimationSettings}
       >
@@ -48,7 +48,7 @@ export const HeroSection = () => {
         {...fadeInAnimationSettings}
       >
         <div>
-          <Link to="mailto:oluwatobibabalola18@gmail.com">
+          <Link target="_blank" to="mailto:oluwatobibabalola18@gmail.com">
             <Button>
               <span className="text-xs group-hover:text-accent-foreground md:text-sm">
                 Email me
@@ -58,7 +58,10 @@ export const HeroSection = () => {
           </Link>
         </div>
         <div>
-          <Link to="https://www.linkedin.com">
+          <Link
+            target="_blank"
+            to="https://www.linkedin.com/in/oluwatobibabalola/"
+          >
             <Button>
               <span className="text-xs group-hover:text-accent-foreground md:text-base">
                 LinkedIn
