@@ -10,6 +10,14 @@ export const Home = () => {
   return (
     <PageBody>
       <HeroSection />
+      <motion.h6
+        variants={fadeIn({ direction: "up" })}
+        initial="hidden"
+        whileInView="show"
+        className="pt-20 text-2xl  md:pt-[197px] font-medium md:text-[32px] leading-[38px] text-primary-foreground"
+      >
+        Selected projects
+      </motion.h6>
 
       <div className="grid gap-y-4">
         {mainProjects.map((project) => {
@@ -24,7 +32,7 @@ export const Home = () => {
                 <p className="text-sm font-normal text-secondary-foreground">
                   {project.name}
                 </p>
-                <p className="px-4 text-2xl font-semibold md:px-0 md:max-w-lg md:text-4xl text-primary-foreground">
+                <p className="px-4 text-2xl  font-semibold md:px-0 md:max-w-2xl md:text-[40px] md:leading-[56px] text-primary-foreground">
                   {project.heading}
                 </p>
                 <div>
