@@ -39,7 +39,7 @@ export const CaseStudies = () => {
                       {project.name}
                     </p>
                     <Link to={project.link}>
-                      <p className="px-4 text-2xl font-semibold md:px-0 md:max-w-lg md:text-4xl text-primary-foreground">
+                      <p className="px-4 text-2xl font-semibold md:px-0 md:max-w-2xl md:text-4xl text-primary-foreground">
                         {project.heading}
                       </p>
                     </Link>
