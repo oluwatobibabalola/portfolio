@@ -4,8 +4,8 @@ export const mainProjects = [
   {
     id: 1,
     link: "/case-studies/mutti",
-    heading: "Improve cart conversion from 26.3% to 40%.",
-    name: "mymutti.com",
+    heading: "Product inventory management system for mymutti",
+    name: "E-commerce",
     asset: {
       src: myMuttiPhoto,
       alt: "mymutti.com screenshot",
@@ -35,7 +35,7 @@ export const mainProjects = [
     id: 2,
     link: "",
     heading: "Customer activity report tool for pharmacists.",
-    name: "Bloom App",
+    name: "B2B SAAS",
     asset: {
       src: bloomAppPhoto,
       alt: "bloom app screenshot",
