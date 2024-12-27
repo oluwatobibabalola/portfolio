@@ -11,7 +11,7 @@ export const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-50 w-full pt-10 lg:pt-16 bg-white/70 backdrop-blur-md ">
-      <nav className="w-full px-6 py-5 border rounded-full shadow-sm lg:px-14 backdrop-blur-md bg-white/30 border-border-color">
+      <nav className="w-full px-6 py-5 border rounded-full shadow-sm lg:px-10 backdrop-blur-md bg-white/30 border-border-color">
         <div className="flex items-center justify-between mx-auto">
           <div className="flex items-center space-x-2 md:space-x-4">
             <Link to={"/"}>
@@ -58,7 +58,7 @@ export const Navbar = () => {
             </li>
             <li>
               <Link
-                className="transition-colors  text-secondary-foreground hover:text-accent-foreground"
+                className="transition-colors text-secondary-foreground hover:text-accent-foreground"
                 to="mailto:oluwatobibabalola18@gmail.com"
               >
                 email me
