@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import profilePic from "../assets/profile-pic.png";
+import profilePic from "../assets/profile-picture.png";
 import { PageBody } from "../components/layout/page-body";
 import { education } from "../data/education";
 import { experience } from "../data/experience";
@@ -8,8 +8,8 @@ import { fadeIn } from "../animations/variants";
 
 export const Profile = () => {
   return (
-    <PageBody className="items-start pt-12 pb-0 border-b-0 ">
-      <div className="grid grid-cols-2 md:gap-x-20">
+    <PageBody className="items-start pt-12 pb-0 border-b-0 max-w-7xl">
+      <div className="grid grid-cols-[1fr_500px] lg:gap-x-20 ">
         <motion.h1
           className="col-span-2 text-base font-medium md:text-xl text-primary-foreground"
           variants={fadeIn({ direction: "down" })}
@@ -18,7 +18,7 @@ export const Profile = () => {
           Hi there 👋🏾
         </motion.h1>
         <motion.h2
-          className="col-span-2 pt-4 pb-8 text-2xl font-semibold md:text-6xl text-primary-foreground "
+          className="col-span-2 pt-4 pb-8 text-2xl font-semibold   md:text-[64px] md:leading-[76px] text-primary-foreground "
           variants={fadeIn({ direction: "right" })}
           {...fadeInAnimationSettings}
         >
@@ -71,7 +71,7 @@ export const Profile = () => {
           </motion.p>
         </div>
         <motion.div
-          className="w-full col-span-2 mt-10 md:mt-0 md:col-span-1"
+          className="h-[700px] mt-10 md:mt-0 md:col-span-1"
           variants={fadeIn({ direction: "left" })}
           {...fadeInAnimationSettings}
         >
